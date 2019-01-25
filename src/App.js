@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Demo1 from './components/demo1.js'
+import Demo2 from './components/demo2.js'
+import Demo3 from './components/demo3.js'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const Index = () => <h2>Home</h2>;
 
-export default App;
+const AppRouter = () => (
+  <Router>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/demo1/">demo1</Link>
+          </li>
+          <li>
+            <Link to="/demo2/">demo2</Link>
+          </li>
+          <li>
+            <Link to="/demo3/">demo3</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Route path="/" exact component={Index} / >
+      <Route path="/demo1/" component={Demo1} />
+      <Route path="/demo2/" component={Demo2} />
+      <Route path="/demo3/" component={Demo3} />
+    </div>
+  </Router>
+);
+
+
+export default AppRouter;
